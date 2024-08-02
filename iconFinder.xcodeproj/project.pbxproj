@@ -9,11 +9,15 @@
 /* Begin PBXBuildFile section */
 		5C927B352C5CBCDA00D916B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B342C5CBCDA00D916B0 /* AppDelegate.swift */; };
 		5C927B372C5CBCDA00D916B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B362C5CBCDA00D916B0 /* SceneDelegate.swift */; };
-		5C927B392C5CBCDA00D916B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B382C5CBCDA00D916B0 /* ViewController.swift */; };
+		5C927B392C5CBCDA00D916B0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B382C5CBCDA00D916B0 /* MainViewController.swift */; };
 		5C927B3E2C5CBCDC00D916B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C927B3D2C5CBCDC00D916B0 /* Assets.xcassets */; };
 		5C927B4C2C5CBCDC00D916B0 /* iconFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B4B2C5CBCDC00D916B0 /* iconFinderTests.swift */; };
 		5C927B562C5CBCDC00D916B0 /* iconFinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B552C5CBCDC00D916B0 /* iconFinderUITests.swift */; };
 		5C927B582C5CBCDC00D916B0 /* iconFinderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B572C5CBCDC00D916B0 /* iconFinderUITestsLaunchTests.swift */; };
+		5C927B6D2C5CCB7C00D916B0 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B6C2C5CCB7C00D916B0 /* MainViewModel.swift */; };
+		5C927B702C5CDAD900D916B0 /* UITextField+PlaceholderColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B6F2C5CDAD900D916B0 /* UITextField+PlaceholderColor.swift */; };
+		5C927B762C5CDFF100D916B0 /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B752C5CDFF100D916B0 /* SearchButton.swift */; };
+		5C927B782C5CE01800D916B0 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B772C5CE01800D916B0 /* SearchTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +41,7 @@
 		5C927B312C5CBCDA00D916B0 /* iconFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iconFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C927B342C5CBCDA00D916B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C927B362C5CBCDA00D916B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5C927B382C5CBCDA00D916B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5C927B382C5CBCDA00D916B0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5C927B3D2C5CBCDC00D916B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C927B422C5CBCDC00D916B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = iconFinder/Configuration/Info.plist; sourceTree = SOURCE_ROOT; };
 		5C927B472C5CBCDC00D916B0 /* iconFinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iconFinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +49,10 @@
 		5C927B512C5CBCDC00D916B0 /* iconFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iconFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C927B552C5CBCDC00D916B0 /* iconFinderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iconFinderUITests.swift; sourceTree = "<group>"; };
 		5C927B572C5CBCDC00D916B0 /* iconFinderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iconFinderUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5C927B6C2C5CCB7C00D916B0 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		5C927B6F2C5CDAD900D916B0 /* UITextField+PlaceholderColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+PlaceholderColor.swift"; sourceTree = "<group>"; };
+		5C927B752C5CDFF100D916B0 /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
+		5C927B772C5CE01800D916B0 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,10 +103,12 @@
 		5C927B332C5CBCDA00D916B0 /* iconFinder */ = {
 			isa = PBXGroup;
 			children = (
+				5C927B712C5CDF6300D916B0 /* Common */,
+				5C927B642C5CC28700D916B0 /* Application */,
 				5C927B662C5CC2D500D916B0 /* Configuration */,
 				5C927B652C5CC2B700D916B0 /* Resources */,
-				5C927B642C5CC28700D916B0 /* Application */,
-				5C927B382C5CBCDA00D916B0 /* ViewController.swift */,
+				5C927B6E2C5CDA8000D916B0 /* Library */,
+				5C927B682C5CCA6800D916B0 /* Main Module */,
 			);
 			path = iconFinder;
 			sourceTree = "<group>";
@@ -143,6 +153,80 @@
 				5C927B422C5CBCDC00D916B0 /* Info.plist */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		5C927B682C5CCA6800D916B0 /* Main Module */ = {
+			isa = PBXGroup;
+			children = (
+				5C927B6B2C5CCA9900D916B0 /* View */,
+				5C927B6A2C5CCA8800D916B0 /* ViewModel */,
+				5C927B692C5CCA7D00D916B0 /* Model */,
+			);
+			path = "Main Module";
+			sourceTree = "<group>";
+		};
+		5C927B692C5CCA7D00D916B0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5C927B6A2C5CCA8800D916B0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5C927B6C2C5CCB7C00D916B0 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5C927B6B2C5CCA9900D916B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5C927B382C5CBCDA00D916B0 /* MainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5C927B6E2C5CDA8000D916B0 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				5C927B6F2C5CDAD900D916B0 /* UITextField+PlaceholderColor.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		5C927B712C5CDF6300D916B0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5C927B722C5CDF7800D916B0 /* UIComponents */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		5C927B722C5CDF7800D916B0 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				5C927B742C5CDFD500D916B0 /* SearchButton */,
+				5C927B732C5CDFA000D916B0 /* SearchTextField */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		5C927B732C5CDFA000D916B0 /* SearchTextField */ = {
+			isa = PBXGroup;
+			children = (
+				5C927B772C5CE01800D916B0 /* SearchTextField.swift */,
+			);
+			path = SearchTextField;
+			sourceTree = "<group>";
+		};
+		5C927B742C5CDFD500D916B0 /* SearchButton */ = {
+			isa = PBXGroup;
+			children = (
+				5C927B752C5CDFF100D916B0 /* SearchButton.swift */,
+			);
+			path = SearchButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,9 +358,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C927B392C5CBCDA00D916B0 /* ViewController.swift in Sources */,
+				5C927B392C5CBCDA00D916B0 /* MainViewController.swift in Sources */,
 				5C927B352C5CBCDA00D916B0 /* AppDelegate.swift in Sources */,
 				5C927B372C5CBCDA00D916B0 /* SceneDelegate.swift in Sources */,
+				5C927B702C5CDAD900D916B0 /* UITextField+PlaceholderColor.swift in Sources */,
+				5C927B782C5CE01800D916B0 /* SearchTextField.swift in Sources */,
+				5C927B6D2C5CCB7C00D916B0 /* MainViewModel.swift in Sources */,
+				5C927B762C5CDFF100D916B0 /* SearchButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
