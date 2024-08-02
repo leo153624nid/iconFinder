@@ -20,6 +20,7 @@ enum MainViewState {
 }
 
 final class MainViewModel: ObservableObject {
+    private let iconService: FindIconService
     private let converter = IconItemConverter()
     
     @Published var viewState = MainViewState.initial
@@ -32,21 +33,27 @@ final class MainViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }
     
+    init(iconService: FindIconService) {
+        self.iconService = iconService
+    }
+    
     func perform(_ action: MainViewModelAction) {
         switch action {
         case .find:
             viewState = .loading
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            iconService.fetchIconItems { [weak self] result in
                 guard let self else { return }
-                let mocks = [
-                    IconItem(iconID: 0, tags: [], rasterSizes: []),
-                    IconItem(iconID: 1, tags: [], rasterSizes: []),
-                    IconItem(iconID: 2, tags: [], rasterSizes: []),
-                ]
-                self.items = converter.map(items: mocks)
-                self.viewState = .success
+                switch result {
+                case .success(let iconsData):
+                    self.items = self.converter.map(items: iconsData.icons)
+                    self.viewState = .success
+                case .failure(let error):
+                    print(error)
+                    self.viewState = .failure
+                }
             }
+            
         }
     }
     

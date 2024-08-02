@@ -24,6 +24,7 @@
 		5C927B802C5D049B00D916B0 /* IconsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B7F2C5D049B00D916B0 /* IconsData.swift */; };
 		5C927B822C5D309500D916B0 /* MainTableViewCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B812C5D309500D916B0 /* MainTableViewCellData.swift */; };
 		5C927B852C5D389600D916B0 /* IconItemConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B842C5D389600D916B0 /* IconItemConverter.swift */; };
+		5C927B882C5D50E300D916B0 /* FindIconService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B872C5D50E300D916B0 /* FindIconService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		5C927B7F2C5D049B00D916B0 /* IconsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsData.swift; sourceTree = "<group>"; };
 		5C927B812C5D309500D916B0 /* MainTableViewCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCellData.swift; sourceTree = "<group>"; };
 		5C927B842C5D389600D916B0 /* IconItemConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconItemConverter.swift; sourceTree = "<group>"; };
+		5C927B872C5D50E300D916B0 /* FindIconService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIconService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		5C927B332C5CBCDA00D916B0 /* iconFinder */ = {
 			isa = PBXGroup;
 			children = (
+				5C927B862C5D509800D916B0 /* Network */,
 				5C927B712C5CDF6300D916B0 /* Common */,
 				5C927B642C5CC28700D916B0 /* Application */,
 				5C927B662C5CC2D500D916B0 /* Configuration */,
@@ -253,6 +256,14 @@
 				5C927B842C5D389600D916B0 /* IconItemConverter.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		5C927B862C5D509800D916B0 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				5C927B872C5D50E300D916B0 /* FindIconService.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,6 +406,7 @@
 				5C927B702C5CDAD900D916B0 /* UITextField+PlaceholderColor.swift in Sources */,
 				5C927B782C5CE01800D916B0 /* SearchTextField.swift in Sources */,
 				5C927B6D2C5CCB7C00D916B0 /* MainViewModel.swift in Sources */,
+				5C927B882C5D50E300D916B0 /* FindIconService.swift in Sources */,
 				5C927B852C5D389600D916B0 /* IconItemConverter.swift in Sources */,
 				5C927B762C5CDFF100D916B0 /* SearchButton.swift in Sources */,
 			);

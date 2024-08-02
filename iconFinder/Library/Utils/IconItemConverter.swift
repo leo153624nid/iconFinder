@@ -11,7 +11,14 @@ public struct IconItemConverter {
     func map(items: [IconItem]) -> [MainTableViewCellData] {
         items.map { item in
             var name = ""
-            if let maxSize = item.rasterSizes.map({ $0.size }).max() {
+            var iconPreview = ""
+            var iconDownload = ""
+            
+            if let maxSize = item.rasterSizes.map({ $0.size }).max(),
+               let format = item.rasterSizes.first(where: { $0.size == maxSize })?.formats.first {
+                
+                iconPreview = format.previewURL
+                iconDownload = format.downloadURL
                 name = "\(maxSize) x \(maxSize)"
             } else {
                 name = "No correct dimensions"
@@ -24,7 +31,8 @@ public struct IconItemConverter {
                 description = item.tags.joined(separator: ", ")
             }
             
-            return MainTableViewCellData(icon: "", // TODO: - update
+            return MainTableViewCellData(iconPreview: iconPreview,
+                                         iconDownload: iconDownload,
                                          name: name,
                                          description: description)
         }

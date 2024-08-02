@@ -61,6 +61,7 @@ private extension MainViewController {
         
         // bind viewState
         viewModel.$viewState
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] viewState in
                 guard let self else { return }
                 switch viewState {

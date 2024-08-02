@@ -19,7 +19,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         window?.windowScene = windowScene
-        let viewModel = MainViewModel()
+        let viewModel = MainViewModel(iconService: FindIconServiceImpl.shared)
         window?.rootViewController = MainViewController(viewModel: viewModel)
         window?.makeKeyAndVisible()
     }

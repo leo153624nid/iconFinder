@@ -9,7 +9,8 @@ import Foundation
 
 //MARK: - MainTableViewCellData
 struct MainTableViewCellData {
-    let icon: String
+    let iconPreview: String
+    let iconDownload: String
     let name: String
     let description: String
 }
