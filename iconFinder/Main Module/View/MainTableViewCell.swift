@@ -11,7 +11,7 @@ final class MainTableViewCell: UITableViewCell {
    
     private let iconView: UIImageView = {
         let iconView = UIImageView()
-        // TODO: -
+        // TODO: - update
         return iconView
     }()
     private let nameLabel: UILabel = {
@@ -46,7 +46,7 @@ final class MainTableViewCell: UITableViewCell {
     
     private func initialization() {
         backgroundColor = .clear
-        iconView.backgroundColor = .red
+        iconView.backgroundColor = .red // TODO: set image placeholder
 
         contentView.addSubview(iconView)
         contentView.addSubview(nameLabel)
@@ -82,10 +82,10 @@ final class MainTableViewCell: UITableViewCell {
     }
     
     // MARK: Configure
-    func configure(with item: String) {
+    func configure(with item: MainTableViewCellData) {
         // TODO: - fetch and Set image
-        nameLabel.text = item
-        descriptionLabel.text = item + item + item + item + item + item + item + item + item + item + item
+        nameLabel.text = item.name
+        descriptionLabel.text = item.description
     }
     
 }

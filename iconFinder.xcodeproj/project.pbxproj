@@ -21,6 +21,9 @@
 		5C927B7A2C5CF4F700D916B0 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B792C5CF4F700D916B0 /* MainTableViewCell.swift */; };
 		5C927B7C2C5D014C00D916B0 /* UITableView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B7B2C5D014C00D916B0 /* UITableView+Register.swift */; };
 		5C927B7E2C5D017800D916B0 /* UITableViewCell+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B7D2C5D017800D916B0 /* UITableViewCell+ReuseIdentifier.swift */; };
+		5C927B802C5D049B00D916B0 /* IconsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B7F2C5D049B00D916B0 /* IconsData.swift */; };
+		5C927B822C5D309500D916B0 /* MainTableViewCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B812C5D309500D916B0 /* MainTableViewCellData.swift */; };
+		5C927B852C5D389600D916B0 /* IconItemConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B842C5D389600D916B0 /* IconItemConverter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		5C927B792C5CF4F700D916B0 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		5C927B7B2C5D014C00D916B0 /* UITableView+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Register.swift"; sourceTree = "<group>"; };
 		5C927B7D2C5D017800D916B0 /* UITableViewCell+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ReuseIdentifier.swift"; sourceTree = "<group>"; };
+		5C927B7F2C5D049B00D916B0 /* IconsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsData.swift; sourceTree = "<group>"; };
+		5C927B812C5D309500D916B0 /* MainTableViewCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCellData.swift; sourceTree = "<group>"; };
+		5C927B842C5D389600D916B0 /* IconItemConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconItemConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +180,8 @@
 		5C927B692C5CCA7D00D916B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5C927B7F2C5D049B00D916B0 /* IconsData.swift */,
+				5C927B812C5D309500D916B0 /* MainTableViewCellData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,6 +206,7 @@
 		5C927B6E2C5CDA8000D916B0 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				5C927B832C5D387300D916B0 /* Utils */,
 				5C927B6F2C5CDAD900D916B0 /* UITextField+PlaceholderColor.swift */,
 				5C927B7B2C5D014C00D916B0 /* UITableView+Register.swift */,
 				5C927B7D2C5D017800D916B0 /* UITableViewCell+ReuseIdentifier.swift */,
@@ -236,6 +245,14 @@
 				5C927B752C5CDFF100D916B0 /* SearchButton.swift */,
 			);
 			path = SearchButton;
+			sourceTree = "<group>";
+		};
+		5C927B832C5D387300D916B0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5C927B842C5D389600D916B0 /* IconItemConverter.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,7 +384,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C927B822C5D309500D916B0 /* MainTableViewCellData.swift in Sources */,
 				5C927B7C2C5D014C00D916B0 /* UITableView+Register.swift in Sources */,
+				5C927B802C5D049B00D916B0 /* IconsData.swift in Sources */,
 				5C927B392C5CBCDA00D916B0 /* MainViewController.swift in Sources */,
 				5C927B352C5CBCDA00D916B0 /* AppDelegate.swift in Sources */,
 				5C927B7A2C5CF4F700D916B0 /* MainTableViewCell.swift in Sources */,
@@ -376,6 +395,7 @@
 				5C927B702C5CDAD900D916B0 /* UITextField+PlaceholderColor.swift in Sources */,
 				5C927B782C5CE01800D916B0 /* SearchTextField.swift in Sources */,
 				5C927B6D2C5CCB7C00D916B0 /* MainViewModel.swift in Sources */,
+				5C927B852C5D389600D916B0 /* IconItemConverter.swift in Sources */,
 				5C927B762C5CDFF100D916B0 /* SearchButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

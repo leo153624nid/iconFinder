@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import Combine
 
 final class SearchButton: UIButton {
+    
+    private var cancellables = Set<AnyCancellable>()
     
     init(title: String) {
         super.init(frame: .zero)
         setupButton(title: title)
+        setupUpdates()
     }
     
     @available(*, unavailable)
@@ -23,7 +27,15 @@ final class SearchButton: UIButton {
         setTitle(title, for: .normal)
         setTitleColor(.white, for: .normal)
         layer.cornerRadius = 5
-        backgroundColor = .blue
+    }
+    
+    private func setupUpdates() {
+        publisher(for: \.isEnabled)
+            .sink { [weak self] isEnabled in
+                guard let self else { return }
+                self.backgroundColor = isEnabled ? .blue : .darkGray
+            }
+            .store(in: &cancellables)
     }
     
 }
