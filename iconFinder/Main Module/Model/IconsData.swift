@@ -19,7 +19,7 @@ struct IconsData: Codable {
 }
 
 // MARK: - IconItem
-struct IconItem: Codable {
+struct IconItem: Codable { // TODO: - clear comments
     let iconID: Int
     let tags: [String]
 //    let publishedAt: String

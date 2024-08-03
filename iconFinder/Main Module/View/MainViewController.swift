@@ -13,8 +13,8 @@ final class MainViewController: UIViewController {
     private let viewModel: MainViewModel
     private var cancellables = Set<AnyCancellable>()
     
-    private lazy var searchTextField = SearchTextField(placeholder: "Enter icon name...")
-    private lazy var searchButton = SearchButton(title: "Find")
+    private lazy var searchTextField = SearchTextField(placeholder: Constants.searchTextFieldPlaceholder)
+    private lazy var searchButton = SearchButton(title: Constants.searchButtonNormalTitle)
     private lazy var resultsLabel = UILabel()
     private lazy var tableView = UITableView()
     private lazy var activityIndicator = UIActivityIndicatorView(style: .large)
@@ -36,7 +36,9 @@ final class MainViewController: UIViewController {
     }
     
     @objc private func searchButtonTapped() {
-        viewModel.perform(.find)
+        if viewModel.viewState != .loading {
+            viewModel.perform(.find)
+        }
     }
     
     @objc func endEditingTap(sender: UITapGestureRecognizer) {
@@ -69,18 +71,18 @@ private extension MainViewController {
                     self.tableView.isHidden = true
                 case .loading:
                     self.tableView.isHidden = true
-                    self.searchButton.setTitle("Loading", for: .normal)
+                    self.searchButton.setTitle(Constants.searchButtonLoadingTitle, for: .normal)
                     self.activityIndicator.startAnimating()
                 case .success:
                     self.tableView.reloadData()
                     self.tableView.isHidden = false
-                    self.searchButton.setTitle("Find", for: .normal)
+                    self.searchButton.setTitle(Constants.searchButtonNormalTitle, for: .normal)
                     self.activityIndicator.stopAnimating()
-                case .failure:
-                    // TODO: - update
+                case .failure(let message):
                     self.tableView.isHidden = false
-                    self.searchButton.setTitle("Find", for: .normal)
+                    self.searchButton.setTitle(Constants.searchButtonNormalTitle, for: .normal)
                     self.activityIndicator.stopAnimating()
+                    self.showAlertView(with: message)
                 }
             }
             .store(in: &cancellables)
@@ -129,13 +131,21 @@ private extension MainViewController {
     
     func setupResultsLabel() {
         resultsLabel.font = .systemFont(ofSize: 30, weight: .bold)
-        resultsLabel.text = "Results:"
+        resultsLabel.text = Constants.resultLabelText
     }
     
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MainTableViewCell.self)
+    }
+    
+    func showAlertView(with message: String?) {
+        let alert = UIAlertController(title: Constants.alertTitle,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Constants.alertButtonTitle, style: .default))
+        self.present(alert, animated: true)
     }
 }
 
@@ -227,7 +237,6 @@ extension MainViewController: UITableViewDataSource {
         cell.configure(with: item)
         return cell
     }
-    
 }
 
 //MARK: - UITextFieldDelegate
@@ -240,5 +249,16 @@ extension MainViewController: UITextFieldDelegate {
         }
         return true
     }
-    
+}
+
+//MARK: - Local Constants
+extension MainViewController {
+    struct Constants {
+        static let searchButtonNormalTitle = "Find"
+        static let searchButtonLoadingTitle = "Loading"
+        static let searchTextFieldPlaceholder = "Enter icon name..."
+        static let resultLabelText = "Results:"
+        static let alertTitle = "Some error"
+        static let alertButtonTitle = "Ok"
+    }
 }

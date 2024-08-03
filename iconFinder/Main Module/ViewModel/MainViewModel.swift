@@ -12,11 +12,11 @@ enum MainViewModelAction {
     case find
 }
 
-enum MainViewState {
+enum MainViewState: Equatable {
     case initial
     case loading
     case success
-    case failure
+    case failure(String)
 }
 
 final class MainViewModel: ObservableObject {
@@ -42,15 +42,15 @@ final class MainViewModel: ObservableObject {
         case .find:
             viewState = .loading
             
-            iconService.fetchIconItems { [weak self] result in
+            iconService.fetchIconItems(query: searchText) { [weak self] result in
                 guard let self else { return }
                 switch result {
                 case .success(let iconsData):
                     self.items = self.converter.map(items: iconsData.icons)
                     self.viewState = .success
                 case .failure(let error):
-                    print(error)
-                    self.viewState = .failure
+                    let message = "\(error.localizedDescription)\n\n\(error)"
+                    self.viewState = .failure(message)
                 }
             }
             
