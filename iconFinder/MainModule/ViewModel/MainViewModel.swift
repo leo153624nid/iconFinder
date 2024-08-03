@@ -9,20 +9,24 @@ import Foundation
 import Combine
 import UIKit
 
+//MARK: - MainViewState
+enum MainViewState: Equatable {
+    case initial
+    case loading
+    case success(String?)
+    case failure(String)
+}
+
+//MARK: - MainViewModelAction
 enum MainViewModelAction {
     case find
     case downLoadImage(MainTableViewCellData)
 }
 
-enum MainViewState: Equatable {
-    case initial
-    case loading
-    case success
-    case failure(String)
-}
-
+//MARK: - MainViewModel
 final class MainViewModel: ObservableObject {
     private let iconService: FindIconService
+    private let iconSaver: ImageSaver
     private let converter = IconItemConverter()
     
     @Published var viewState = MainViewState.initial
@@ -35,8 +39,9 @@ final class MainViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }
     
-    init(iconService: FindIconService) {
+    init(iconService: FindIconService, iconSaver: ImageSaver) {
         self.iconService = iconService
+        self.iconSaver = iconSaver
     }
     
     func perform(_ action: MainViewModelAction) {
@@ -49,7 +54,7 @@ final class MainViewModel: ObservableObject {
                 switch result {
                 case .success(let iconsData):
                     self.items = self.converter.map(items: iconsData.icons)
-                    self.viewState = .success
+                    self.viewState = .success(nil)
                 case .failure(let error):
                     let message = "\(error.localizedDescription)\n\n\(error)"
                     self.viewState = .failure(message)
@@ -57,13 +62,37 @@ final class MainViewModel: ObservableObject {
             }
             
         case .downLoadImage(let item):
-            iconService.downloadImage(from: item) { data, error in
-                if let data {
-                    let image = UIImage(data: data)
-                    // TODO
+            iconService.downloadImage(from: item) { [weak self] data, error in
+                guard let self else { return }
+                
+                if let error {
+                    self.viewState = .failure(error.localizedDescription)
+                    return
+                }
+                guard let data, let image = UIImage(data: data) else {
+                    self.viewState = .failure(Constants.noImageMessage)
+                    return
+                }
+
+                self.iconSaver.writeToPhotoAlbum(image: image) { saved, error in
+                    if let error {
+                        self.viewState = .failure(error.localizedDescription)
+                        return
+                    }
+                    if saved {
+                        self.viewState = .success(Constants.successMessage)
+                    }
                 }
             }
         }
     }
     
+}
+
+//MARK: - Local Constants
+extension MainViewModel {
+    struct Constants {
+        static let successMessage = "Image saved"
+        static let noImageMessage = "No image"
+    }
 }

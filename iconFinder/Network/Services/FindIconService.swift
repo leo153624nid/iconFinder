@@ -92,7 +92,7 @@ final class FindIconServiceImpl: FindIconService {
         }
     }
     
-    func downloadImage(from item: MainTableViewCellData, completion: @escaping (Data?, Error?) -> Void) { // TODO: - update
+    func downloadImage(from item: MainTableViewCellData, completion: @escaping (Data?, Error?) -> Void) {
         guard let url = URL(string: item.iconDownload) else {
             completion(nil, NetworkError.urlError)
             return
@@ -114,7 +114,7 @@ final class FindIconServiceImpl: FindIconService {
             }
             
             guard let localUrl else {
-                completion(nil, NetworkError.urlError) // badLocalUrl
+                completion(nil, NetworkError.urlError)
                 return
             }
             

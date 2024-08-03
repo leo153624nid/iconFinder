@@ -47,12 +47,12 @@ final class ImageLoader: UIImageView {
         }
 
         // image does not available in cache.. so retrieving it from url...
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
 
             if let error {
                 print(error)
                 DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
+                    self?.activityIndicator.stopAnimating()
                 }
                 return
             }
@@ -60,13 +60,13 @@ final class ImageLoader: UIImageView {
             DispatchQueue.main.async {
                 if let unwrappedData = data, let imageToCache = UIImage(data: unwrappedData) {
                     
-                    if self.imageURL == url {
-                        self.image = imageToCache
+                    if self?.imageURL == url {
+                        self?.image = imageToCache
                     }
-                    self.imageCache[url] = imageToCache
+                    self?.imageCache[url] = imageToCache
 
                 }
-                self.activityIndicator.stopAnimating()
+                self?.activityIndicator.stopAnimating()
             }
         }
         .resume()

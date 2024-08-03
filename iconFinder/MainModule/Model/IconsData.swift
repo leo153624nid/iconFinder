@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - IconsData
-struct IconsData: Codable {
+struct IconsData: Codable { // TODO: - add init from decoder
     let totalCount: Int
     let icons: [IconItem]
 

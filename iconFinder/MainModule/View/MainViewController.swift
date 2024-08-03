@@ -77,7 +77,11 @@ private extension MainViewController {
                     self.searchButton.setTitle(Constants.searchButtonLoadingTitle, for: .normal)
                     self.activityIndicator.startAnimating()
                     self.noItemsLabel.isHidden = true
-                case .success:
+                case .success(let message):
+                    if let message {
+                        self.showAlertView(title: Constants.alertSuccessTitle, message: message)
+                        return
+                    }
                     self.tableView.reloadData()
                     self.tableView.isHidden = false
                     self.searchButton.setTitle(Constants.searchButtonNormalTitle, for: .normal)
@@ -87,7 +91,7 @@ private extension MainViewController {
                     self.tableView.isHidden = false
                     self.searchButton.setTitle(Constants.searchButtonNormalTitle, for: .normal)
                     self.activityIndicator.stopAnimating()
-                    self.showAlertView(with: message)
+                    self.showAlertView(title: Constants.alertErrorTitle, message: message)
                     self.noItemsLabel.isHidden = !viewModel.items.isEmpty
                 }
             }
@@ -154,8 +158,8 @@ private extension MainViewController {
         noItemsLabel.text = Constants.noDataLabelText
     }
     
-    func showAlertView(with message: String?) {
-        let alert = UIAlertController(title: Constants.alertTitle,
+    func showAlertView(title: String, message: String) {
+        let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Constants.alertButtonTitle, style: .default))
@@ -243,8 +247,6 @@ private extension MainViewController {
 //MARK: - UITableViewDelegate
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("choose cell")
-        // TODO: - update
         let item = viewModel.items[indexPath.row]
         viewModel.perform(.downLoadImage(item))
     }
@@ -284,7 +286,8 @@ extension MainViewController {
         static let searchButtonLoadingTitle = "Loading"
         static let searchTextFieldPlaceholder = "Enter icon name..."
         static let resultLabelText = "Results:"
-        static let alertTitle = "Some error"
+        static let alertErrorTitle = "Some error"
+        static let alertSuccessTitle = "Success"
         static let alertButtonTitle = "Ok"
         static let noDataLabelText = "No icons"
     }
