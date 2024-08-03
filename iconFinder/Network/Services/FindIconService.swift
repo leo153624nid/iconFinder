@@ -9,19 +9,20 @@ import Foundation
 
 protocol FindIconService {
     func fetchIconItems(query: String, completion: @escaping (Result<IconsData, NetworkError>) -> Void)
+    func downloadImage(from item: MainTableViewCellData, completion: @escaping (Data?, Error?) -> Void)
 }
 
 final class FindIconServiceImpl: FindIconService {
     // Для прода синглтон не подходит, но для тестового - думаю это приемлемо.
     // Затаскивать кастомный DI не хочется, тем более, что по условию нельзя использовать сторонние решения типа Needle...
-    static var shared: FindIconServiceImpl { FindIconServiceImpl() }
+    static let shared = FindIconServiceImpl()
     
     private let apiKey = AsPersistantStore.apiKey
     
     private let scheme = Constants.API.scheme
     private let host = Constants.API.host
     private let searchPath = Constants.API.searchPath
-    private let pageSize = 10
+    private let pageSize = 20
     
     private init() {}
     
@@ -89,6 +90,42 @@ final class FindIconServiceImpl: FindIconService {
         } else {
             fetchData(from: url, completion: completion)
         }
+    }
+    
+    func downloadImage(from item: MainTableViewCellData, completion: @escaping (Data?, Error?) -> Void) { // TODO: - update
+        guard let url = URL(string: item.iconDownload) else {
+            completion(nil, NetworkError.urlError)
+            return
+        }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.setValue(Constants.API.Headers.authorization.value + apiKey,
+                            forHTTPHeaderField: Constants.API.Headers.authorization.rawValue)
+        
+        URLSession.shared.downloadTask(with: urlRequest) { localUrl, response, error in
+            if let error {
+                completion(nil, error)
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode) else {
+                completion(nil, NetworkError.badResponse)
+                return
+            }
+            
+            guard let localUrl else {
+                completion(nil, NetworkError.urlError) // badLocalUrl
+                return
+            }
+            
+            do {
+                let data = try Data(contentsOf: localUrl)
+                completion(data, nil)
+            } catch let error {
+                completion(nil, error)
+            }
+        }
+        .resume()
     }
     
 }

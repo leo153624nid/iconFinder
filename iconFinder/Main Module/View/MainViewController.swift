@@ -16,8 +16,10 @@ final class MainViewController: UIViewController {
     private lazy var searchTextField = SearchTextField(placeholder: Constants.searchTextFieldPlaceholder)
     private lazy var searchButton = SearchButton(title: Constants.searchButtonNormalTitle)
     private lazy var resultsLabel = UILabel()
+    // Бесконечную пагинацию не делал, тк этого не было в условии, всегда получаю первые 20 элементов
     private lazy var tableView = UITableView()
     private lazy var activityIndicator = UIActivityIndicatorView(style: .large)
+    private lazy var noItemsLabel = UILabel()
     
     init(viewModel: MainViewModel) {
         self.viewModel = viewModel
@@ -69,20 +71,24 @@ private extension MainViewController {
                 switch viewState {
                 case .initial:
                     self.tableView.isHidden = true
+                    self.noItemsLabel.isHidden = !viewModel.items.isEmpty
                 case .loading:
                     self.tableView.isHidden = true
                     self.searchButton.setTitle(Constants.searchButtonLoadingTitle, for: .normal)
                     self.activityIndicator.startAnimating()
+                    self.noItemsLabel.isHidden = true
                 case .success:
                     self.tableView.reloadData()
                     self.tableView.isHidden = false
                     self.searchButton.setTitle(Constants.searchButtonNormalTitle, for: .normal)
                     self.activityIndicator.stopAnimating()
+                    self.noItemsLabel.isHidden = !viewModel.items.isEmpty
                 case .failure(let message):
                     self.tableView.isHidden = false
                     self.searchButton.setTitle(Constants.searchButtonNormalTitle, for: .normal)
                     self.activityIndicator.stopAnimating()
                     self.showAlertView(with: message)
+                    self.noItemsLabel.isHidden = !viewModel.items.isEmpty
                 }
             }
             .store(in: &cancellables)
@@ -100,6 +106,8 @@ private extension MainViewController {
         setupSearchTextField()
         setupResultsLabel()
         setupTableView()
+        setupNoDataLabel()
+        
         setupLayout()
     }
 }
@@ -112,6 +120,7 @@ private extension MainViewController {
         view.addSubview(resultsLabel)
         view.addSubview(tableView)
         view.addSubview(activityIndicator)
+        view.addSubview(noItemsLabel)
     }
     
     func addTargets() {
@@ -140,6 +149,11 @@ private extension MainViewController {
         tableView.register(MainTableViewCell.self)
     }
     
+    func setupNoDataLabel() {
+        noItemsLabel.font = .systemFont(ofSize: 16, weight: .semibold)
+        noItemsLabel.text = Constants.noDataLabelText
+    }
+    
     func showAlertView(with message: String?) {
         let alert = UIAlertController(title: Constants.alertTitle,
                                       message: message,
@@ -157,6 +171,7 @@ private extension MainViewController {
         setupResultsLabelConstraints()
         setupTableViewConstraints()
         setupActivityIndicatorConstraints()
+        setupNoDataLabelConstraints()
     }
     
     func setupSearchTextFieldConstraints() {
@@ -214,6 +229,15 @@ private extension MainViewController {
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0),
         ])
     }
+    
+    func setupNoDataLabelConstraints() {
+        noItemsLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            noItemsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            noItemsLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0),
+        ])
+    }
 }
 
 //MARK: - UITableViewDelegate
@@ -221,6 +245,8 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("choose cell")
         // TODO: - update
+        let item = viewModel.items[indexPath.row]
+        viewModel.perform(.downLoadImage(item))
     }
 
 }
@@ -260,5 +286,6 @@ extension MainViewController {
         static let resultLabelText = "Results:"
         static let alertTitle = "Some error"
         static let alertButtonTitle = "Ok"
+        static let noDataLabelText = "No icons"
     }
 }

@@ -34,6 +34,10 @@ public struct Constants {
         }
     }
     
+    struct UI {
+        static let placeholderImage = "placeholderImage"
+    }
+    
 }
 
 //MARK: - Критические данные так хранить нельзя, надо использовать KeyChainSwift и ему подобные persistantStorage,

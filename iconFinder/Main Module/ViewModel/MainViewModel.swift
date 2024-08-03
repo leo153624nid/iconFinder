@@ -7,9 +7,11 @@
 
 import Foundation
 import Combine
+import UIKit
 
 enum MainViewModelAction {
     case find
+    case downLoadImage(MainTableViewCellData)
 }
 
 enum MainViewState: Equatable {
@@ -54,6 +56,13 @@ final class MainViewModel: ObservableObject {
                 }
             }
             
+        case .downLoadImage(let item):
+            iconService.downloadImage(from: item) { data, error in
+                if let data {
+                    let image = UIImage(data: data)
+                    // TODO
+                }
+            }
         }
     }
     

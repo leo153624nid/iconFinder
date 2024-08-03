@@ -9,9 +9,9 @@ import UIKit
 
 final class MainTableViewCell: UITableViewCell {
    
-    private let iconView: UIImageView = {
-        let iconView = UIImageView()
-        // TODO: - update
+    private let iconView: ImageLoader = {
+        let iconView = ImageLoader(imageCache: ImageCache.shared)
+        iconView.image = UIImage(named: Constants.UI.placeholderImage)
         return iconView
     }()
     private let nameLabel: UILabel = {
@@ -46,7 +46,7 @@ final class MainTableViewCell: UITableViewCell {
     
     private func initialization() {
         backgroundColor = .clear
-        iconView.backgroundColor = .red // TODO: set image placeholder
+        iconView.backgroundColor = .clear
 
         contentView.addSubview(iconView)
         contentView.addSubview(nameLabel)
@@ -76,14 +76,16 @@ final class MainTableViewCell: UITableViewCell {
     // MARK: Lifecycle
     override func prepareForReuse() {
         super.prepareForReuse()
-        iconView.image = nil
+        iconView.image = UIImage(named: Constants.UI.placeholderImage)
         nameLabel.text = nil
         descriptionLabel.text = nil
     }
     
     // MARK: Configure
     func configure(with item: MainTableViewCellData) {
-        // TODO: - fetch and Set image
+        if let url = URL(string: item.iconPreview) {
+            iconView.loadImageWithUrl(url)
+        }
         nameLabel.text = item.name
         descriptionLabel.text = item.description
     }
