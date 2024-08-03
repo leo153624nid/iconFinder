@@ -32,6 +32,7 @@
 		5C927B952C5E623500D916B0 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B942C5E623500D916B0 /* ImageCache.swift */; };
 		5C927B982C5E638D00D916B0 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B972C5E638C00D916B0 /* ImageLoader.swift */; };
 		5C927B9B2C5E74DE00D916B0 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B9A2C5E74DE00D916B0 /* ImageSaver.swift */; };
+		5C927B9F2C5E776B00D916B0 /* IconItemConverterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B9E2C5E776B00D916B0 /* IconItemConverterTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		5C927B942C5E623500D916B0 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		5C927B972C5E638C00D916B0 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		5C927B9A2C5E74DE00D916B0 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		5C927B9E2C5E776B00D916B0 /* IconItemConverterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconItemConverterTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 		5C927B4A2C5CBCDC00D916B0 /* iconFinderTests */ = {
 			isa = PBXGroup;
 			children = (
+				5C927B9C2C5E773D00D916B0 /* Library */,
 				5C927B4B2C5CBCDC00D916B0 /* iconFinderTests.swift */,
 			);
 			path = iconFinderTests;
@@ -327,6 +330,22 @@
 			path = ImageSaver;
 			sourceTree = "<group>";
 		};
+		5C927B9C2C5E773D00D916B0 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				5C927B9D2C5E774600D916B0 /* Utils */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		5C927B9D2C5E774600D916B0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5C927B9E2C5E776B00D916B0 /* IconItemConverterTest.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -484,6 +503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C927B9F2C5E776B00D916B0 /* IconItemConverterTest.swift in Sources */,
 				5C927B4C2C5CBCDC00D916B0 /* iconFinderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
