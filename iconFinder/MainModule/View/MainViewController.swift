@@ -140,6 +140,7 @@ private extension MainViewController {
     func setupSearchTextField() {
         searchTextField.delegate = self
         searchTextField.clearButtonMode = .whileEditing
+        searchTextField.returnKeyType = .done
     }
     
     func setupResultsLabel() {
@@ -151,6 +152,7 @@ private extension MainViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MainTableViewCell.self)
+        tableView.accessibilityIdentifier = "mainTableView"
     }
     
     func setupNoDataLabel() {
