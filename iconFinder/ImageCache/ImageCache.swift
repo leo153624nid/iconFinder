@@ -20,7 +20,7 @@ protocol ImageCacheType: AnyObject {
 //MARK: ImageCache
 final class ImageCache {
     // Для прода синглтон не подходит, но для тестового - думаю это приемлемо.
-    // Затаскивать кастомный DI не хочется, тем более, что по условию нельзя использовать сторонние решения типа Needle...
+    // Затаскивать кастомный DI не хочется, а по условию нельзя использовать сторонние решения типа Needle...
     static let shared = ImageCache()
 
     // 1st level cache, that contains encoded images

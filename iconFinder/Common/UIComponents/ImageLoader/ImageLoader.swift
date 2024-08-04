@@ -50,7 +50,6 @@ final class ImageLoader: UIImageView {
         URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
 
             if let error {
-                print(error)
                 DispatchQueue.main.async {
                     self?.activityIndicator.stopAnimating()
                 }

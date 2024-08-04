@@ -16,15 +16,19 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
         window = UIWindow(windowScene: windowScene)
         window?.windowScene = windowScene
+        
+        setupMainModule()
+    }
+    
+    private func setupMainModule() {
         // Для прода синглтоны не подходят, но для тестового - думаю это приемлемо.
-        // Затаскивать кастомный DI не хочется, тем более, что по условию нельзя использовать сторонние решения типа Needle...
+        // Затаскивать кастомный DI не хочется, а по условию нельзя использовать сторонние решения типа Needle...
         let viewModel = MainViewModel(iconService: FindIconServiceImpl.shared,
                                       iconSaver: ImageSaverImpl.shared)
-        window?.rootViewController = MainViewController(viewModel: viewModel)
-        window?.makeKeyAndVisible()
+        self.window?.rootViewController = MainViewController(viewModel: viewModel)
+        self.window?.makeKeyAndVisible()
     }
 
 }

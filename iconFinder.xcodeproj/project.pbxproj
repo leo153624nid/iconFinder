@@ -34,6 +34,8 @@
 		5C927B9B2C5E74DE00D916B0 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B9A2C5E74DE00D916B0 /* ImageSaver.swift */; };
 		5C927B9F2C5E776B00D916B0 /* IconItemConverterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927B9E2C5E776B00D916B0 /* IconItemConverterTest.swift */; };
 		5C927BA32C5E7C3900D916B0 /* MainViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927BA22C5E7C3900D916B0 /* MainViewModelTest.swift */; };
+		5C927BA52C5F6FAB00D916B0 /* APIkeys.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C927BA42C5F6FAB00D916B0 /* APIkeys.json */; settings = {ASSET_TAGS = (APIkeys, ); }; };
+		5C927BA82C5F8E4700D916B0 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C927BA72C5F8E4700D916B0 /* KeyChainManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		5C927B9A2C5E74DE00D916B0 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		5C927B9E2C5E776B00D916B0 /* IconItemConverterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconItemConverterTest.swift; sourceTree = "<group>"; };
 		5C927BA22C5E7C3900D916B0 /* MainViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTest.swift; sourceTree = "<group>"; };
+		5C927BA42C5F6FAB00D916B0 /* APIkeys.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = APIkeys.json; sourceTree = "<group>"; };
+		5C927BA72C5F8E4700D916B0 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,7 @@
 				5C927B932C5E61D200D916B0 /* ImageCache */,
 				5C927B862C5D509800D916B0 /* Network */,
 				5C927B712C5CDF6300D916B0 /* Common */,
+				5C927BA62C5F8E2800D916B0 /* PersistantStorage */,
 			);
 			path = iconFinder;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 			children = (
 				5C927B8B2C5E20E100D916B0 /* Constants.swift */,
 				5C927B422C5CBCDC00D916B0 /* Info.plist */,
+				5C927BA42C5F6FAB00D916B0 /* APIkeys.json */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -365,6 +371,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		5C927BA62C5F8E2800D916B0 /* PersistantStorage */ = {
+			isa = PBXGroup;
+			children = (
+				5C927BA72C5F8E4700D916B0 /* KeyChainManager.swift */,
+			);
+			path = PersistantStorage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -428,6 +442,9 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				KnownAssetTags = (
+					APIkeys,
+				);
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
@@ -469,6 +486,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C927BA52C5F6FAB00D916B0 /* APIkeys.json in Resources */,
 				5C927B3E2C5CBCDC00D916B0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,6 +527,7 @@
 				5C927B702C5CDAD900D916B0 /* UITextField+PlaceholderColor.swift in Sources */,
 				5C927B782C5CE01800D916B0 /* SearchTextField.swift in Sources */,
 				5C927B6D2C5CCB7C00D916B0 /* MainViewModel.swift in Sources */,
+				5C927BA82C5F8E4700D916B0 /* KeyChainManager.swift in Sources */,
 				5C927B902C5E214C00D916B0 /* HTTPMethod.swift in Sources */,
 				5C927B882C5D50E300D916B0 /* FindIconService.swift in Sources */,
 				5C927B852C5D389600D916B0 /* IconItemConverter.swift in Sources */,
@@ -691,6 +710,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = APIkeys;
 				PRODUCT_BUNDLE_IDENTIFIER = chaykin.iconFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -722,6 +742,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = APIkeys;
 				PRODUCT_BUNDLE_IDENTIFIER = chaykin.iconFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -32,7 +32,7 @@ final class MainViewModelTest: XCTestCase {
         viewModel.searchText = "find2"
         viewModel.perform(.find)
         XCTAssertEqual(viewModel.viewState,
-                       MainViewState.failure("The operation couldn’t be completed. (iconFinder.NetworkError error 3.)\n\nbadResponse"))
+                       MainViewState.failure("The operation couldn’t be completed. (iconFinder.NetworkError error 4.)\n\nbadResponse"))
         XCTAssertEqual(viewModel.items.count, 0)
         viewModel.items = []
         viewModel.viewState = .initial
@@ -44,7 +44,7 @@ final class MainViewModelTest: XCTestCase {
                                          description: "")
         viewModel.perform(.downLoadImage(item1))
         XCTAssertEqual(viewModel.viewState,
-                       MainViewState.failure("The operation couldn’t be completed. (iconFinder.NetworkError error 3.)"))
+                       MainViewState.failure("The operation couldn’t be completed. (iconFinder.NetworkError error 4.)"))
         viewModel.viewState = .initial
         
         // Action "downLoadImage", failure - no data
@@ -64,7 +64,7 @@ final class MainViewModelTest: XCTestCase {
                                          description: "")
         viewModel.perform(.downLoadImage(item3))
         XCTAssertEqual(viewModel.viewState,
-                       MainViewState.failure("The operation couldn’t be completed. (iconFinder.NetworkError error 5.)"))
+                       MainViewState.failure("The operation couldn’t be completed. (iconFinder.NetworkError error 6.)"))
         viewModel.viewState = .initial
         
         // Action "downLoadImage", success
