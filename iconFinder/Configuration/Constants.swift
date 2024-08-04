@@ -36,11 +36,12 @@ public struct Constants {
     
     struct UI {
         static let placeholderImage = "placeholderImage"
+        static let testIcon = "testIcon"
     }
     
 }
 
-//MARK: - Критические данные так хранить нельзя, надо использовать KeyChainSwift и ему подобные persistantStorage,
+//MARK: - Критические данные так хранить нельзя, надо использовать KeyChain и ему подобные persistantStorage,
 // но тк нельзя использовать сторонние либы, то для тестового задания - думаю приемлемо
 struct AsPersistantStore {
     static let apiKey = "yq7RoWWJ9oXeExbUGoYslOYWSfYWLSAs3xslSLExkGrlE7FijPFb8k2yfZLifXuJ"
